@@ -7,6 +7,8 @@ class GameStats:
         self.reset_stats()
         # 游戏启动时处于活跃状态
         self.game_active = False
+        # 不重置最高分
+        self.high_score = 0
 
     def reset_stats(self):
         """初始化统计信息"""
