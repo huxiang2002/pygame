@@ -6,6 +6,7 @@ from bullet import Bullet
 from alien import Alien
 from time import sleep
 from game_stats import GameStats
+from button import Button
 
 
 class AlienInvasion:
@@ -29,6 +30,8 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
+        # 创建Play按钮
+        self.play_button = Button(self, "Play")
 
     def run_game(self):
         """开始游戏的主循环"""
@@ -152,6 +155,9 @@ class AlienInvasion:
             bullet.draw_bullet()
 
         self.aliens.draw(self.screen)
+        # 如果游戏处于非活跃状态，就绘制Play按钮
+        if not self.stats.game_active:
+            self.play_button.drow_button()
         # 让最近绘制的屏幕可见
         pygame.display.flip()
 
